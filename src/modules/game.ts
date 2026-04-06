@@ -1,0 +1,103 @@
+import { QuizManager, Question } from "./questions";
+import { ScoreManager } from "./scoring";
+import { UIManager } from "./ui";
+
+export class GameManager {
+  private quizManager: QuizManager;
+  private scoreManager: ScoreManager;
+  private uiManager: UIManager;
+
+  private totalQuestionCount: number;
+  private questionCount: number;
+  private currentQuestion: Question | undefined;
+
+  private playerName: string;
+
+  private onRoundEnd: (
+    playerName: string,
+    points: number,
+    score: number,
+  ) => void;
+
+  constructor(
+    quizManager: QuizManager,
+    scoreManager: ScoreManager,
+    uiManager: UIManager,
+    totalQuestionCount: number,
+    onRoundEnd: (playerName: string, points: number, score: number) => void,
+  ) {
+    this.quizManager = quizManager;
+    this.scoreManager = scoreManager;
+    this.uiManager = uiManager;
+    this.totalQuestionCount = totalQuestionCount;
+    this.onRoundEnd = onRoundEnd;
+    this.questionCount = 0;
+    this.currentQuestion = undefined;
+    this.playerName = "";
+  }
+
+  setPlayerName(playerName: string) {
+    this.playerName = playerName;
+  }
+
+  startGame() {
+    this.uiManager.hideElement("player-input");
+    this.uiManager.showElement("quiz-container");
+    this.uiManager.showElement("question-container");
+
+    this.currentQuestion = this.quizManager.getNextQuestion();
+
+    if (this.currentQuestion) {
+      this.questionCount++;
+      const question = this.currentQuestion;
+      this.uiManager.renderQuestion(
+        question,
+        this.questionCount,
+        (optionIndex) => this.handleAnswer(question, optionIndex),
+      );
+    } else {
+      throw new Error("Not enough questions available");
+    }
+  }
+
+  handleAnswer(question: Question, optionIndex: number) {
+    this.scoreManager.updateScore(question, optionIndex);
+
+    if (this.questionCount < this.totalQuestionCount) {
+      this.currentQuestion = this.quizManager.getNextQuestion();
+    } else {
+      this.onRoundEnd(
+        this.playerName,
+        this.scoreManager.getEarnedPoints(),
+        this.scoreManager.getScore(),
+      );
+      this.uiManager.showGameSummary(this.scoreManager.getGameSummary());
+      this.uiManager.showRestartButton((playerName: string): void => {
+        this.resetGame();
+        this.setPlayerName(playerName);
+        this.startGame();
+      });
+      return;
+    }
+
+    if (this.currentQuestion) {
+      this.questionCount++;
+      const question = this.currentQuestion;
+      this.uiManager.renderQuestion(
+        question,
+        this.questionCount,
+        (optionIndex) => this.handleAnswer(question, optionIndex),
+      );
+    } else {
+      throw new Error("Not enough questions available");
+    }
+  }
+
+  resetGame() {
+    this.scoreManager.reset();
+    this.quizManager.reset();
+    this.questionCount = 0;
+    this.currentQuestion = undefined;
+    this.playerName = "";
+  }
+}
