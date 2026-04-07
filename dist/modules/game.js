@@ -1,6 +1,6 @@
 export class GameManager {
-    constructor(quizManager, scoreManager, uiManager, totalQuestionCount, onRoundEnd) {
-        this.quizManager = quizManager;
+    constructor(questionManager, scoreManager, uiManager, totalQuestionCount, onRoundEnd) {
+        this.questionManager = questionManager;
         this.scoreManager = scoreManager;
         this.uiManager = uiManager;
         this.totalQuestionCount = totalQuestionCount;
@@ -16,7 +16,7 @@ export class GameManager {
         this.uiManager.hideElement("player-input");
         this.uiManager.showElement("quiz-container");
         this.uiManager.showElement("question-container");
-        this.currentQuestion = this.quizManager.getNextQuestion();
+        this.currentQuestion = this.questionManager.getNextQuestion();
         if (this.currentQuestion) {
             this.questionCount++;
             const question = this.currentQuestion;
@@ -29,7 +29,7 @@ export class GameManager {
     handleAnswer(question, playerAnswer) {
         this.scoreManager.updateScore(question, playerAnswer);
         if (this.questionCount < this.totalQuestionCount) {
-            this.currentQuestion = this.quizManager.getNextQuestion();
+            this.currentQuestion = this.questionManager.getNextQuestion();
         }
         else {
             this.onRoundEnd(this.playerName, this.scoreManager.getEarnedPoints(), this.scoreManager.getScore());
@@ -52,7 +52,7 @@ export class GameManager {
     }
     resetGame() {
         this.scoreManager.reset();
-        this.quizManager.reset();
+        this.questionManager.reset();
         this.questionCount = 0;
         this.currentQuestion = undefined;
         this.playerName = "";

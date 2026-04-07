@@ -6,7 +6,7 @@ export interface Question {
   difficulty: "easy" | "medium" | "hard";
 }
 
-export class QuizManager {
+export class QuestionManager {
   private originalQuestions: Question[];
   private questions: Question[];
 
@@ -34,5 +34,19 @@ export class QuizManager {
   reset() {
     this.questions = [...this.originalQuestions];
     this.shuffleQuestions();
+  }
+
+  static async loadQuestions(filePath: string): Promise<Question[]> {
+    const response = await fetch(filePath);
+
+    if (!response.ok) {
+      throw new Error(
+        `Fetching ${filePath} failed with status: ${response.status}`,
+      );
+    }
+
+    const questions: Question[] = await response.json();
+
+    return questions;
   }
 }

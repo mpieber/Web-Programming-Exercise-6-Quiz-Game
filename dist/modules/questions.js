@@ -1,4 +1,4 @@
-export class QuizManager {
+export class QuestionManager {
     constructor(questions) {
         this.originalQuestions = [...questions];
         this.questions = [...questions];
@@ -20,5 +20,13 @@ export class QuizManager {
     reset() {
         this.questions = [...this.originalQuestions];
         this.shuffleQuestions();
+    }
+    static async loadQuestions(filePath) {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`Fetching ${filePath} failed with status: ${response.status}`);
+        }
+        const questions = await response.json();
+        return questions;
     }
 }

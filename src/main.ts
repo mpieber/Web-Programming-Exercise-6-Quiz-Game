@@ -1,6 +1,6 @@
 import { UIManager } from "./modules/ui.js";
 import { ScoreManager } from "./modules/scoring.js";
-import { Question, QuizManager } from "./modules/questions.js";
+import { QuestionManager } from "./modules/questions.js";
 import { GameManager } from "./modules/game.js";
 
 export interface ScoreRecord {
@@ -20,13 +20,13 @@ initGame(questionsFilePath);
 
 async function initGame(filePath: string) {
   try {
-    const questions = await loadQuestions(filePath);
+    const questions = await QuestionManager.loadQuestions(filePath);
 
-    const quizManager = new QuizManager(questions);
+    const questionManager = new QuestionManager(questions);
     const scoreManager = new ScoreManager();
 
     const gameManager = new GameManager(
-      quizManager,
+      questionManager,
       scoreManager,
       uiManager,
       totalQuestionCount,
@@ -41,20 +41,6 @@ async function initGame(filePath: string) {
     console.error(error);
     alert("Failed to load questions");
   }
-}
-
-async function loadQuestions(filePath: string): Promise<Question[]> {
-  const response = await fetch(filePath);
-
-  if (!response.ok) {
-    throw new Error(
-      `Fetching ${filePath} failed with status: ${response.status}`,
-    );
-  }
-
-  const questions: Question[] = await response.json();
-
-  return questions;
 }
 
 function updateLeaderboard(
