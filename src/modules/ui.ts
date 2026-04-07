@@ -27,23 +27,28 @@ export class UIManager {
     );
 
     question.options.forEach((option) => {
-      const optionContainer = this.createElement(
+      const optionsContainer = this.createElement(
         "div",
         "",
         "",
         ["col-12", "col-md-6", "col-lg-3", "px-2", "py-2"],
         "answer-options",
       );
+
       const optionButton = this.createElement(
         "button",
         "",
         option,
-        ["btn", "btn-primary", "w-100"],
+        ["btn", "btn-primary", "w-100", "option-button"],
         "",
       );
-      optionButton.addEventListener("click", () => onAnswer(option));
 
-      optionContainer.appendChild(optionButton);
+      optionButton.addEventListener("click", () => {
+        this.disableOptionButtons();
+        onAnswer(option);
+      });
+
+      optionsContainer.appendChild(optionButton);
     });
 
     this.showElement("quiz-container");
@@ -160,6 +165,15 @@ export class UIManager {
         "leaderboard-list",
       ),
     );
+  }
+
+  private disableOptionButtons(): void {
+    const optionsContainer = this.requireElement("answer-options");
+    const optionButtons =
+      optionsContainer.querySelectorAll<HTMLButtonElement>(".option-button");
+    optionButtons.forEach((button) => {
+      button.disabled = true;
+    });
   }
 
   // <K extends keyof HTMLElementTagNameMap> defines a generic parameter K

@@ -5,10 +5,13 @@ export class UIManager {
         const questionText = this.createElement("div", "question-text", `${questionNumber}. [${question.category}] ${question.question} (Difficulty: ${question.difficulty})`, ["my-2"], "question-container");
         const answerOptions = this.createElement("div", "answer-options", "", ["row"], "question-container");
         question.options.forEach((option) => {
-            const optionContainer = this.createElement("div", "", "", ["col-12", "col-md-6", "col-lg-3", "px-2", "py-2"], "answer-options");
-            const optionButton = this.createElement("button", "", option, ["btn", "btn-primary", "w-100"], "");
-            optionButton.addEventListener("click", () => onAnswer(option));
-            optionContainer.appendChild(optionButton);
+            const optionsContainer = this.createElement("div", "", "", ["col-12", "col-md-6", "col-lg-3", "px-2", "py-2"], "answer-options");
+            const optionButton = this.createElement("button", "", option, ["btn", "btn-primary", "w-100", "option-button"], "");
+            optionButton.addEventListener("click", () => {
+                this.disableOptionButtons();
+                onAnswer(option);
+            });
+            optionsContainer.appendChild(optionButton);
         });
         this.showElement("quiz-container");
     }
@@ -60,6 +63,13 @@ export class UIManager {
         const leaderboardList = this.requireElement("leaderboard-list");
         leaderboardList.replaceChildren();
         scoreList.forEach((entry) => this.createElement("div", "", `${entry.playerName}: ${entry.points} points (${entry.score} %)`, ["card", "p-2", "my-2"], "leaderboard-list"));
+    }
+    disableOptionButtons() {
+        const optionsContainer = this.requireElement("answer-options");
+        const optionButtons = optionsContainer.querySelectorAll(".option-button");
+        optionButtons.forEach((button) => {
+            button.disabled = true;
+        });
     }
     // <K extends keyof HTMLElementTagNameMap> defines a generic parameter K
     // constrained to the keys of the interface HTMLElementTagNameMap.
