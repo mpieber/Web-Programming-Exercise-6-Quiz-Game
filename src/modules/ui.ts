@@ -1,20 +1,12 @@
 import { Question } from "./questions";
-import { CategoryResult, GameSummary } from "./scoring";
+import { GameSummary } from "./scoring";
 import { ScoreRecord } from "./../main";
-
-/*
-export interface Answer {
-  category: string;
-  correct: boolean;
-  points: number;
-}
-*/
 
 export class UIManager {
   showQuestion(
     question: Question,
     questionNumber: number,
-    onAnswer: (optionIndex: number) => void,
+    onAnswer: (playerAnswer: string) => void,
   ): void {
     const questionContainer = this.requireElement("question-container");
     questionContainer.replaceChildren();
@@ -34,7 +26,7 @@ export class UIManager {
       "question-container",
     );
 
-    question.options.forEach((option, optionIndex) => {
+    question.options.forEach((option) => {
       const optionContainer = this.createElement(
         "div",
         "",
@@ -49,7 +41,7 @@ export class UIManager {
         ["btn", "btn-primary", "w-100"],
         "",
       );
-      optionButton.addEventListener("click", () => onAnswer(optionIndex));
+      optionButton.addEventListener("click", () => onAnswer(option));
 
       optionContainer.appendChild(optionButton);
     });
@@ -64,7 +56,7 @@ export class UIManager {
     this.showPlayerInput(onStart);
   }
 
-  showPlayerInput(onStart: (playerName: string) => void) {
+  private showPlayerInput(onStart: (playerName: string) => void) {
     const playerInputContainer = this.requireElement("player-input");
     playerInputContainer.replaceChildren();
 
@@ -222,7 +214,7 @@ export class UIManager {
   private requireElement(elementId: string): HTMLElement {
     const element = document.getElementById(elementId);
     if (!element) {
-      throw new Error(`Error: parent element with id '${elementId}' not found`);
+      throw new Error(`Parent element with id '${elementId}' not found`);
     }
     return element;
   }

@@ -20,14 +20,14 @@ export class GameManager {
         if (this.currentQuestion) {
             this.questionCount++;
             const question = this.currentQuestion;
-            this.uiManager.showQuestion(question, this.questionCount, (optionIndex) => this.handleAnswer(question, optionIndex));
+            this.uiManager.showQuestion(question, this.questionCount, (playerAnswer) => this.handleAnswer(question, playerAnswer));
         }
         else {
             throw new Error("Not enough questions available");
         }
     }
-    handleAnswer(question, optionIndex) {
-        this.scoreManager.updateScore(question, optionIndex);
+    handleAnswer(question, playerAnswer) {
+        this.scoreManager.updateScore(question, playerAnswer);
         if (this.questionCount < this.totalQuestionCount) {
             this.currentQuestion = this.quizManager.getNextQuestion();
         }

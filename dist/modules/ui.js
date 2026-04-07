@@ -1,20 +1,13 @@
-/*
-export interface Answer {
-  category: string;
-  correct: boolean;
-  points: number;
-}
-*/
 export class UIManager {
     showQuestion(question, questionNumber, onAnswer) {
         const questionContainer = this.requireElement("question-container");
         questionContainer.replaceChildren();
         const questionText = this.createElement("div", "question-text", `${questionNumber}. [${question.category}] ${question.question} (Difficulty: ${question.difficulty})`, ["my-2"], "question-container");
         const answerOptions = this.createElement("div", "answer-options", "", ["row"], "question-container");
-        question.options.forEach((option, optionIndex) => {
+        question.options.forEach((option) => {
             const optionContainer = this.createElement("div", "", "", ["col-12", "col-md-6", "col-lg-3", "px-2", "py-2"], "answer-options");
             const optionButton = this.createElement("button", "", option, ["btn", "btn-primary", "w-100"], "");
-            optionButton.addEventListener("click", () => onAnswer(optionIndex));
+            optionButton.addEventListener("click", () => onAnswer(option));
             optionContainer.appendChild(optionButton);
         });
         this.showElement("quiz-container");
@@ -102,7 +95,7 @@ export class UIManager {
     requireElement(elementId) {
         const element = document.getElementById(elementId);
         if (!element) {
-            throw new Error(`Error: parent element with id '${elementId}' not found`);
+            throw new Error(`Parent element with id '${elementId}' not found`);
         }
         return element;
     }

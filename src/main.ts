@@ -39,7 +39,7 @@ async function initGame(filePath: string) {
     });
   } catch (error) {
     console.error(error);
-    alert("Failed to load questions.");
+    alert("Failed to load questions");
   }
 }
 

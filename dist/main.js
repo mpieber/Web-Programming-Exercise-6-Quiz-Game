@@ -20,7 +20,7 @@ async function initGame(filePath) {
     }
     catch (error) {
         console.error(error);
-        alert("Failed to load questions.");
+        alert("Failed to load questions");
     }
 }
 async function loadQuestions(filePath) {

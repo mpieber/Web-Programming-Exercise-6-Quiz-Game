@@ -2,7 +2,7 @@ export interface Question {
   category: string;
   question: string;
   options: string[];
-  answer: number;
+  answer: string;
   difficulty: "easy" | "medium" | "hard";
 }
 

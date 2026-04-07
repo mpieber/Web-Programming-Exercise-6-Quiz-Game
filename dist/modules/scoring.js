@@ -6,7 +6,7 @@ export class ScoreManager {
         this.answerRecords = [];
         this.pointsPerDifficulty = { easy: 1, medium: 2, hard: 3 };
     }
-    updateScore(question, answerOption) {
+    updateScore(question, playerAnswer) {
         const currPoints = this.pointsPerDifficulty[question.difficulty];
         let categoryResult = this.categoryResults.find((item) => item.category === question.category);
         if (!categoryResult) {
@@ -22,7 +22,7 @@ export class ScoreManager {
         this.maxPoints += currPoints;
         categoryResult.maxPoints += currPoints;
         categoryResult.totalQuestions++;
-        if (question.answer === answerOption) {
+        if (question.answer === playerAnswer) {
             this.earnedPoints += currPoints;
             categoryResult.earnedPoints += currPoints;
             categoryResult.correctAnswers++;
