@@ -1,9 +1,77 @@
 [
   {
-    "category": "Math",
-    "question": "What is 2 + 2?",
-    "options": [2, 3, 4, 5],
-    "answer": 4,
+    "category": "Science",
+    "question": "What planet is known as the Red Planet?",
+    "options": ["Earth", "Mars", "Jupiter", "Venus"],
+    "answer": 1,
     "difficulty": "easy"
+  },
+  {
+    "category": "History",
+    "question": "Who was the first President of the United States?",
+    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "category": "Geography",
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "category": "Math",
+    "question": "What is 12 × 8?",
+    "options": ["96", "88", "108", "86"],
+    "answer": 0,
+    "difficulty": "easy"
+  },
+  {
+    "category": "Technology",
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Trainer Marking Language",
+      "HyperText Markup Language",
+      "HighText Markdown Language",
+      "HyperText Machine Language"
+    ],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "category": "Literature",
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "category": "Sports",
+    "question": "How many players are on the field for one soccer team during a match?",
+    "options": ["9", "10", "11", "12"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "category": "Physics",
+    "question": "What is the chemical symbol for gold?",
+    "options": ["Ag", "Au", "Gd", "Go"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "category": "Computer Science",
+    "question": "Which data structure uses FIFO (First In, First Out)?",
+    "options": ["Stack", "Queue", "Tree", "Graph"],
+    "answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "category": "Biology",
+    "question": "What part of the cell contains genetic material?",
+    "options": ["Nucleus", "Membrane", "Ribosome", "Cytoplasm"],
+    "answer": 0,
+    "difficulty": "hard"
   }
 ]

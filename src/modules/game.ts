@@ -50,10 +50,8 @@ export class GameManager {
     if (this.currentQuestion) {
       this.questionCount++;
       const question = this.currentQuestion;
-      this.uiManager.renderQuestion(
-        question,
-        this.questionCount,
-        (optionIndex) => this.handleAnswer(question, optionIndex),
+      this.uiManager.showQuestion(question, this.questionCount, (optionIndex) =>
+        this.handleAnswer(question, optionIndex),
       );
     } else {
       throw new Error("Not enough questions available");
@@ -83,10 +81,8 @@ export class GameManager {
     if (this.currentQuestion) {
       this.questionCount++;
       const question = this.currentQuestion;
-      this.uiManager.renderQuestion(
-        question,
-        this.questionCount,
-        (optionIndex) => this.handleAnswer(question, optionIndex),
+      this.uiManager.showQuestion(question, this.questionCount, (optionIndex) =>
+        this.handleAnswer(question, optionIndex),
       );
     } else {
       throw new Error("Not enough questions available");

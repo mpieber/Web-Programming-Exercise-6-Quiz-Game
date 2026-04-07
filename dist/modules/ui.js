@@ -6,7 +6,7 @@ export interface Answer {
 }
 */
 export class UIManager {
-    renderQuestion(question, questionNumber, onAnswer) {
+    showQuestion(question, questionNumber, onAnswer) {
         const questionContainer = this.requireElement("question-container");
         questionContainer.replaceChildren();
         const questionText = this.createElement("div", "question-text", `${questionNumber}. [${question.category}] ${question.question} (Difficulty: ${question.difficulty})`, ["my-2"], "question-container");
@@ -22,9 +22,9 @@ export class UIManager {
     showStartScreen(onStart) {
         this.showElement("player-input");
         this.hideElement("quiz-container");
-        this.renderPlayerInput(onStart);
+        this.showPlayerInput(onStart);
     }
-    renderPlayerInput(onStart) {
+    showPlayerInput(onStart) {
         const playerInputContainer = this.requireElement("player-input");
         playerInputContainer.replaceChildren();
         const textInput = document.createElement("input");

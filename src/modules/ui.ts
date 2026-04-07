@@ -11,7 +11,7 @@ export interface Answer {
 */
 
 export class UIManager {
-  renderQuestion(
+  showQuestion(
     question: Question,
     questionNumber: number,
     onAnswer: (optionIndex: number) => void,
@@ -61,10 +61,10 @@ export class UIManager {
     this.showElement("player-input");
     this.hideElement("quiz-container");
 
-    this.renderPlayerInput(onStart);
+    this.showPlayerInput(onStart);
   }
 
-  renderPlayerInput(onStart: (playerName: string) => void) {
+  showPlayerInput(onStart: (playerName: string) => void) {
     const playerInputContainer = this.requireElement("player-input");
     playerInputContainer.replaceChildren();
 
