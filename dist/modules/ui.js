@@ -33,7 +33,7 @@ export class UIManager {
         startButton.addEventListener("click", () => {
             const playerName = textInput.value.trim();
             if (playerName.length === 0) {
-                alert("Please enter your name.");
+                alert("Please enter your name");
                 return;
             }
             onStart(playerName);
