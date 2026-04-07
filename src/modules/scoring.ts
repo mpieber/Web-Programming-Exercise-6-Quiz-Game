@@ -51,7 +51,7 @@ export class ScoreManager {
     categoryResult.maxPoints += currPoints;
     categoryResult.totalQuestions++;
 
-    if (question.isCorrect(answerOption)) {
+    if (question.answer === answerOption) {
       this.earnedPoints += currPoints;
       categoryResult.earnedPoints += currPoints;
       categoryResult.correctAnswers++;

@@ -163,7 +163,7 @@ export class UIManager {
       this.createElement(
         "div",
         "",
-        `${entry.playerName}: ${entry.score} %`,
+        `${entry.playerName}: ${entry.points} points (${entry.score} %)`,
         ["card", "p-2", "my-2"],
         "leaderboard-list",
       ),

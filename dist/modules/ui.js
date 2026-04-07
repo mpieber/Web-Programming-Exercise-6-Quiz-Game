@@ -66,7 +66,7 @@ export class UIManager {
     showLeaderboard(scoreList) {
         const leaderboardList = this.requireElement("leaderboard-list");
         leaderboardList.replaceChildren();
-        scoreList.forEach((entry) => this.createElement("div", "", `${entry.playerName}: ${entry.score} %`, ["card", "p-2", "my-2"], "leaderboard-list"));
+        scoreList.forEach((entry) => this.createElement("div", "", `${entry.playerName}: ${entry.points} points (${entry.score} %)`, ["card", "p-2", "my-2"], "leaderboard-list"));
     }
     // <K extends keyof HTMLElementTagNameMap> defines a generic parameter K
     // constrained to the keys of the interface HTMLElementTagNameMap.

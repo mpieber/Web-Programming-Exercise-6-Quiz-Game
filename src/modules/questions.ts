@@ -1,27 +1,9 @@
-export class Question {
+export interface Question {
   category: string;
   question: string;
   options: string[];
   answer: number;
   difficulty: "easy" | "medium" | "hard";
-
-  constructor(
-    category: string,
-    question: string,
-    options: string[],
-    answer: number,
-    difficulty: "easy" | "medium" | "hard",
-  ) {
-    this.category = category;
-    this.question = question;
-    this.options = options;
-    this.answer = answer;
-    this.difficulty = difficulty;
-  }
-
-  isCorrect(answerOption: number) {
-    return this.answer === answerOption;
-  }
 }
 
 export class QuizManager {
