@@ -29,6 +29,48 @@
   },
   {
     "category": "Technology",
+    "question": "Which device is primarily used to point and click on a computer screen?",
+    "options": ["Keyboard", "Mouse", "Printer", "Scanner"],
+    "answer": "Mouse",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Biology",
+    "question": "Which organ pumps blood through the human body?",
+    "options": ["Lung", "Liver", "Heart", "Kidney"],
+    "answer": "Heart",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Literature",
+    "question": "Who wrote 'Harry Potter and the Philosopher's Stone'?",
+    "options": ["J.K. Rowling", "C.S. Lewis", "J.R.R. Tolkien", "Roald Dahl"],
+    "answer": "J.K. Rowling",
+    "difficulty": "easy"
+  },
+  {
+    "category": "General Knowledge",
+    "question": "How many days are there in a leap year?",
+    "options": ["365", "366", "364", "367"],
+    "answer": "366",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Physics",
+    "question": "What force pulls objects toward the Earth?",
+    "options": ["Magnetism", "Gravity", "Friction", "Electricity"],
+    "answer": "Gravity",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Culture",
+    "question": "How many colors are there in a rainbow?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Technology",
     "question": "What does HTML stand for?",
     "options": [
       "Hyper Trainer Marking Language",
@@ -54,10 +96,52 @@
     "difficulty": "medium"
   },
   {
-    "category": "Physics",
+    "category": "Chemistry",
     "question": "What is the chemical symbol for gold?",
     "options": ["Ag", "Au", "Gd", "Go"],
     "answer": "Au",
+    "difficulty": "medium"
+  },
+  {
+    "category": "Geography",
+    "question": "Which river flows through Egypt?",
+    "options": ["Amazon", "Danube", "Nile", "Mississippi"],
+    "answer": "Nile",
+    "difficulty": "medium"
+  },
+  {
+    "category": "Math",
+    "question": "What is the square root of 144?",
+    "options": ["10", "11", "12", "13"],
+    "answer": "12",
+    "difficulty": "medium"
+  },
+  {
+    "category": "Biology",
+    "question": "What is the process by which plants make their food called?",
+    "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+    "answer": "Photosynthesis",
+    "difficulty": "medium"
+  },
+  {
+    "category": "History",
+    "question": "In which year did World War II end?",
+    "options": ["1942", "1945", "1948", "1950"],
+    "answer": "1945",
+    "difficulty": "medium"
+  },
+  {
+    "category": "Computer Science",
+    "question": "Which programming language is primarily used for styling web pages?",
+    "options": ["HTML", "Python", "CSS", "SQL"],
+    "answer": "CSS",
+    "difficulty": "medium"
+  },
+  {
+    "category": "Astronomy",
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Saturn", "Earth", "Jupiter", "Neptune"],
+    "answer": "Jupiter",
     "difficulty": "medium"
   },
   {
@@ -72,6 +156,67 @@
     "question": "What part of the cell contains genetic material?",
     "options": ["Nucleus", "Membrane", "Ribosome", "Cytoplasm"],
     "answer": "Nucleus",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Math",
+    "question": "What is the derivative of x^2?",
+    "options": ["x", "2x", "x^2", "2"],
+    "answer": "2x",
+    "difficulty": "hard"
+  },
+  {
+    "category": "History",
+    "question": "Which empire was ruled by Julius Caesar?",
+    "options": ["Ottoman Empire", "Roman Empire", "British Empire", "Mongol Empire"],
+    "answer": "Roman Empire",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Physics",
+    "question": "What is the SI unit of electrical resistance?",
+    "options": ["Volt", "Watt", "Ohm", "Ampere"],
+    "answer": "Ohm",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Geography",
+    "question": "Which country has the most natural lakes in the world?",
+    "options": ["Canada", "Brazil", "Russia", "Australia"],
+    "answer": "Canada",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Chemistry",
+    "question": "What is the pH value of a neutral solution at 25°C?",
+    "options": ["0", "5", "7", "14"],
+    "answer": "7",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Literature",
+    "question": "Who wrote the dystopian novel '1984'?",
+    "options": ["George Orwell", "Aldous Huxley", "Ernest Hemingway", "F. Scott Fitzgerald"],
+    "answer": "George Orwell",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Technology",
+    "question": "What does CPU stand for?",
+    "options": [
+      "Central Processing Unit",
+      "Computer Primary Unit",
+      "Central Performance Utility",
+      "Core Processing Utility"
+    ],
+    "answer": "Central Processing Unit",
+    "difficulty": "hard"
+  },
+  {
+    "category": "Astronomy",
+    "question": "What is the name of the galaxy that contains our solar system?",
+    "options": ["Andromeda", "Milky Way", "Whirlpool", "Sombrero"],
+    "answer": "Milky Way",
     "difficulty": "hard"
   }
 ]
