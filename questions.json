@@ -1,222 +1,219 @@
 [
   {
-    "category": "Science",
-    "question": "What planet is known as the Red Planet?",
-    "options": ["Earth", "Mars", "Jupiter", "Venus"],
-    "answer": "Mars",
-    "difficulty": "easy"
-  },
-  {
-    "category": "History",
-    "question": "Who was the first President of the United States?",
-    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
-    "answer": "George Washington",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Geography",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Math",
-    "question": "What is 12 × 8?",
-    "options": ["96", "88", "108", "86"],
-    "answer": "96",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Technology",
-    "question": "Which device is primarily used to point and click on a computer screen?",
-    "options": ["Keyboard", "Mouse", "Printer", "Scanner"],
-    "answer": "Mouse",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Biology",
-    "question": "Which organ pumps blood through the human body?",
-    "options": ["Lung", "Liver", "Heart", "Kidney"],
-    "answer": "Heart",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Literature",
-    "question": "Who wrote 'Harry Potter and the Philosopher's Stone'?",
-    "options": ["J.K. Rowling", "C.S. Lewis", "J.R.R. Tolkien", "Roald Dahl"],
-    "answer": "J.K. Rowling",
+    "category": "General Knowledge",
+    "question": "Which ocean is the largest on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "answer": "Pacific Ocean",
     "difficulty": "easy"
   },
   {
     "category": "General Knowledge",
-    "question": "How many days are there in a leap year?",
-    "options": ["365", "366", "364", "367"],
-    "answer": "366",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Physics",
-    "question": "What force pulls objects toward the Earth?",
-    "options": ["Magnetism", "Gravity", "Friction", "Electricity"],
-    "answer": "Gravity",
-    "difficulty": "easy"
-  },
-  {
-    "category": "Culture",
-    "question": "How many colors are there in a rainbow?",
+    "question": "How many continents are there on Earth?",
     "options": ["5", "6", "7", "8"],
     "answer": "7",
     "difficulty": "easy"
   },
   {
-    "category": "Technology",
-    "question": "What does HTML stand for?",
-    "options": [
-      "Hyper Trainer Marking Language",
-      "HyperText Markup Language",
-      "HighText Markdown Language",
-      "HyperText Machine Language"
-    ],
-    "answer": "HyperText Markup Language",
+    "category": "General Knowledge",
+    "question": "Which animal is known as the king of the jungle?",
+    "options": ["Tiger", "Lion", "Elephant", "Leopard"],
+    "answer": "Lion",
+    "difficulty": "easy"
+  },
+  {
+    "category": "General Knowledge",
+    "question": "What is the primary language spoken in Brazil?",
+    "options": ["Spanish", "Portuguese", "French", "English"],
+    "answer": "Portuguese",
+    "difficulty": "easy"
+  },
+  {
+    "category": "General Knowledge",
+    "question": "Which country is famous for the pyramids of Giza?",
+    "options": ["Mexico", "Egypt", "India", "Peru"],
+    "answer": "Egypt",
+    "difficulty": "easy"
+  },
+  {
+    "category": "General Knowledge",
+    "question": "What is the name of the longest river in South America?",
+    "options": ["Nile", "Amazon", "Yangtze", "Mississippi"],
+    "answer": "Amazon",
     "difficulty": "medium"
   },
   {
-    "category": "Literature",
-    "question": "Who wrote 'Romeo and Juliet'?",
-    "options": ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
-    "answer": "William Shakespeare",
+    "category": "General Knowledge",
+    "question": "Which metal is liquid at room temperature?",
+    "options": ["Iron", "Mercury", "Aluminum", "Copper"],
+    "answer": "Mercury",
     "difficulty": "medium"
   },
   {
-    "category": "Sports",
-    "question": "How many players are on the field for one soccer team during a match?",
-    "options": ["9", "10", "11", "12"],
-    "answer": "11",
+    "category": "General Knowledge",
+    "question": "Which country invented paper according to historical records?",
+    "options": ["China", "Greece", "Egypt", "Italy"],
+    "answer": "China",
     "difficulty": "medium"
   },
   {
-    "category": "Chemistry",
-    "question": "What is the chemical symbol for gold?",
-    "options": ["Ag", "Au", "Gd", "Go"],
-    "answer": "Au",
-    "difficulty": "medium"
+    "category": "General Knowledge",
+    "question": "What is the hardest natural substance on Earth?",
+    "options": ["Gold", "Iron", "Diamond", "Quartz"],
+    "answer": "Diamond",
+    "difficulty": "hard"
   },
   {
-    "category": "Geography",
-    "question": "Which river flows through Egypt?",
-    "options": ["Amazon", "Danube", "Nile", "Mississippi"],
-    "answer": "Nile",
+    "category": "General Knowledge",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": ["Gobi", "Kalahari", "Arabian", "Sahara"],
+    "answer": "Sahara",
+    "difficulty": "hard"
+  },
+
+  {
+    "category": "Math",
+    "question": "What is 15 + 27?",
+    "options": ["42", "41", "43", "44"],
+    "answer": "42",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Math",
+    "question": "What is 9 × 7?",
+    "options": ["56", "63", "72", "69"],
+    "answer": "63",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Math",
+    "question": "What is half of 100?",
+    "options": ["25", "40", "50", "60"],
+    "answer": "50",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Math",
+    "question": "How many degrees are in a right angle?",
+    "options": ["45", "90", "180", "360"],
+    "answer": "90",
+    "difficulty": "easy"
+  },
+  {
+    "category": "Math",
+    "question": "What is 11 squared?",
+    "options": ["111", "121", "131", "101"],
+    "answer": "121",
     "difficulty": "medium"
   },
   {
     "category": "Math",
-    "question": "What is the square root of 144?",
-    "options": ["10", "11", "12", "13"],
-    "answer": "12",
+    "question": "What is the value of pi rounded to two decimal places?",
+    "options": ["3.12", "3.14", "3.16", "3.18"],
+    "answer": "3.14",
     "difficulty": "medium"
   },
   {
-    "category": "Biology",
-    "question": "What is the process by which plants make their food called?",
-    "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
-    "answer": "Photosynthesis",
+    "category": "Math",
+    "question": "Solve for x: 3x = 21",
+    "options": ["6", "7", "8", "9"],
+    "answer": "7",
     "difficulty": "medium"
   },
   {
-    "category": "History",
-    "question": "In which year did World War II end?",
-    "options": ["1942", "1945", "1948", "1950"],
-    "answer": "1945",
+    "category": "Math",
+    "question": "What is the area of a rectangle with length 8 and width 5?",
+    "options": ["13", "30", "40", "45"],
+    "answer": "40",
     "difficulty": "medium"
   },
   {
-    "category": "Computer Science",
-    "question": "Which programming language is primarily used for styling web pages?",
-    "options": ["HTML", "Python", "CSS", "SQL"],
-    "answer": "CSS",
-    "difficulty": "medium"
-  },
-  {
-    "category": "Astronomy",
-    "question": "What is the largest planet in our solar system?",
-    "options": ["Saturn", "Earth", "Jupiter", "Neptune"],
-    "answer": "Jupiter",
-    "difficulty": "medium"
-  },
-  {
-    "category": "Computer Science",
-    "question": "Which data structure uses FIFO (First In, First Out)?",
-    "options": ["Stack", "Queue", "Tree", "Graph"],
-    "answer": "Queue",
-    "difficulty": "hard"
-  },
-  {
-    "category": "Biology",
-    "question": "What part of the cell contains genetic material?",
-    "options": ["Nucleus", "Membrane", "Ribosome", "Cytoplasm"],
-    "answer": "Nucleus",
+    "category": "Math",
+    "question": "What is the derivative of 3x?",
+    "options": ["3", "x", "3x", "0"],
+    "answer": "3",
     "difficulty": "hard"
   },
   {
     "category": "Math",
-    "question": "What is the derivative of x^2?",
-    "options": ["x", "2x", "x^2", "2"],
-    "answer": "2x",
-    "difficulty": "hard"
-  },
-  {
-    "category": "History",
-    "question": "Which empire was ruled by Julius Caesar?",
-    "options": ["Ottoman Empire", "Roman Empire", "British Empire", "Mongol Empire"],
-    "answer": "Roman Empire",
-    "difficulty": "hard"
-  },
-  {
-    "category": "Physics",
-    "question": "What is the SI unit of electrical resistance?",
-    "options": ["Volt", "Watt", "Ohm", "Ampere"],
-    "answer": "Ohm",
-    "difficulty": "hard"
-  },
-  {
-    "category": "Geography",
-    "question": "Which country has the most natural lakes in the world?",
-    "options": ["Canada", "Brazil", "Russia", "Australia"],
-    "answer": "Canada",
-    "difficulty": "hard"
-  },
-  {
-    "category": "Chemistry",
-    "question": "What is the pH value of a neutral solution at 25°C?",
-    "options": ["0", "5", "7", "14"],
+    "question": "What is the solution to the equation x^2 = 49?",
+    "options": ["5", "6", "7", "8"],
     "answer": "7",
     "difficulty": "hard"
   },
+
   {
-    "category": "Literature",
-    "question": "Who wrote the dystopian novel '1984'?",
-    "options": ["George Orwell", "Aldous Huxley", "Ernest Hemingway", "F. Scott Fitzgerald"],
-    "answer": "George Orwell",
-    "difficulty": "hard"
+    "category": "IT",
+    "question": "What does PC stand for?",
+    "options": ["Personal Computer", "Primary Computer", "Process Core", "Program Control"],
+    "answer": "Personal Computer",
+    "difficulty": "easy"
   },
   {
-    "category": "Technology",
-    "question": "What does CPU stand for?",
+    "category": "IT",
+    "question": "Which part of a computer is considered the brain?",
+    "options": ["RAM", "SSD", "CPU", "GPU"],
+    "answer": "CPU",
+    "difficulty": "easy"
+  },
+  {
+    "category": "IT",
+    "question": "Which input device is used to type text?",
+    "options": ["Monitor", "Keyboard", "Speaker", "Printer"],
+    "answer": "Keyboard",
+    "difficulty": "easy"
+  },
+  {
+    "category": "IT",
+    "question": "What does USB stand for?",
+    "options": ["Universal Serial Bus", "United System Board", "Universal System Backup", "User Service Bus"],
+    "answer": "Universal Serial Bus",
+    "difficulty": "easy"
+  },
+  {
+    "category": "IT",
+    "question": "Which company developed the Windows operating system?",
+    "options": ["Apple", "Google", "Microsoft", "IBM"],
+    "answer": "Microsoft",
+    "difficulty": "medium"
+  },
+  {
+    "category": "IT",
+    "question": "What does RAM stand for?",
+    "options": ["Read Access Memory", "Random Access Memory", "Rapid Application Module", "Run Access Mode"],
+    "answer": "Random Access Memory",
+    "difficulty": "medium"
+  },
+  {
+    "category": "IT",
+    "question": "Which protocol is primarily used to load websites in a browser?",
+    "options": ["FTP", "HTTP", "SSH", "SMTP"],
+    "answer": "HTTP",
+    "difficulty": "medium"
+  },
+  {
+    "category": "IT",
+    "question": "What kind of software is used to browse the internet?",
+    "options": ["Compiler", "Browser", "Database", "Editor"],
+    "answer": "Browser",
+    "difficulty": "medium"
+  },
+  {
+    "category": "IT",
+    "question": "What does SQL stand for?",
     "options": [
-      "Central Processing Unit",
-      "Computer Primary Unit",
-      "Central Performance Utility",
-      "Core Processing Utility"
+      "Structured Query Language",
+      "Simple Query Logic",
+      "System Quality Language",
+      "Sequential Query Layer"
     ],
-    "answer": "Central Processing Unit",
+    "answer": "Structured Query Language",
     "difficulty": "hard"
   },
   {
-    "category": "Astronomy",
-    "question": "What is the name of the galaxy that contains our solar system?",
-    "options": ["Andromeda", "Milky Way", "Whirlpool", "Sombrero"],
-    "answer": "Milky Way",
+    "category": "IT",
+    "question": "Which data structure works on the LIFO principle?",
+    "options": ["Queue", "Stack", "Array", "Tree"],
+    "answer": "Stack",
     "difficulty": "hard"
   }
 ]
