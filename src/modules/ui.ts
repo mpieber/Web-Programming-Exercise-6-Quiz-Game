@@ -61,7 +61,7 @@ export class UIManager {
     this.showPlayerInput(onStart);
   }
 
-  private showPlayerInput(onStart: (playerName: string) => void) {
+  private showPlayerInput(onStart: (playerName: string) => void): void {
     const playerInputContainer = this.requireElement("player-input");
     playerInputContainer.replaceChildren();
 
@@ -85,9 +85,9 @@ export class UIManager {
         onStart(playerName);
       }
     });
+
     // Focus the input field when the start screen is shown
     setTimeout(() => textInput.focus(), 0);
-    
 
     playerInputContainer.appendChild(textInput);
 
@@ -189,7 +189,8 @@ export class UIManager {
     );
 
     nextButton.addEventListener("click", () => {
-      const feedbackElement = questionContainer.querySelector("#answer-feedback");
+      const feedbackElement =
+        questionContainer.querySelector("#answer-feedback");
       const nextButtonElement = questionContainer.querySelector("#next-button");
 
       feedbackElement?.remove();
@@ -214,7 +215,7 @@ export class UIManager {
     });
   }
 
-  showLeaderboard(scoreList: ScoreRecord[]) {
+  showLeaderboard(scoreList: ScoreRecord[]): void {
     const leaderboardList = this.requireElement("leaderboard-list");
     leaderboardList.replaceChildren();
 

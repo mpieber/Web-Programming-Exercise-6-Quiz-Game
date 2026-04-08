@@ -36,11 +36,11 @@ export class GameManager {
     this.playerName = "";
   }
 
-  setPlayerName(playerName: string) {
+  setPlayerName(playerName: string): void {
     this.playerName = playerName;
   }
 
-  startGame() {
+  startGame(): void {
     this.uiManager.hideElement("player-input");
     this.uiManager.showElement("quiz-container");
     this.uiManager.showElement("question-container");
@@ -60,7 +60,7 @@ export class GameManager {
     }
   }
 
-  handleAnswer(question: Question, playerAnswer: string) {
+  handleAnswer(question: Question, playerAnswer: string): void {
     const isCorrect = question.answer === playerAnswer;
     this.scoreManager.updateScore(question, playerAnswer);
 
@@ -103,7 +103,7 @@ export class GameManager {
     );
   }
 
-  resetGame() {
+  resetGame(): void {
     this.scoreManager.reset();
     this.questionManager.reset();
     this.questionCount = 0;

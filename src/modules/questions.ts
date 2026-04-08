@@ -23,7 +23,9 @@ export class QuestionManager {
   constructor(questions: Question[], questionsPerRound: number) {
     this.questionsByIdx = [...questions];
     this.questionsPerRound = questionsPerRound;
-    this.questionIdxQueue = this.buildBalancedQuestionQueue(this.questionsPerRound);
+    this.questionIdxQueue = this.buildBalancedQuestionQueue(
+      this.questionsPerRound,
+    );
   }
 
   // Fisher-Yates shuffling helper to randomize selected indices.
@@ -95,8 +97,10 @@ export class QuestionManager {
     return this.questionsByIdx[questionIdx];
   }
 
-  reset() {
-    this.questionIdxQueue = this.buildBalancedQuestionQueue(this.questionsPerRound);
+  reset(): void {
+    this.questionIdxQueue = this.buildBalancedQuestionQueue(
+      this.questionsPerRound,
+    );
   }
 
   static async loadQuestions(filePath: string): Promise<Question[]> {

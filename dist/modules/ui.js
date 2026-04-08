@@ -43,7 +43,6 @@ export class UIManager {
         });
         // Focus the input field when the start screen is shown
         setTimeout(() => textInput.focus(), 0);
-        // no autofill
         playerInputContainer.appendChild(textInput);
         const startButton = this.createElement("button", "start-button", "Start Game", ["btn", "btn-primary", "my-2"], "player-input");
         startButton.addEventListener("click", () => {
