@@ -1,4 +1,13 @@
 export interface Question {
+  idx: number;
+  category: string;
+  question: string;
+  options: string[];
+  answer: string;
+  difficulty: "easy" | "medium" | "hard";
+}
+
+interface RawQuestion {
   category: string;
   question: string;
   options: string[];
@@ -7,33 +16,39 @@ export interface Question {
 }
 
 export class QuestionManager {
-  private originalQuestions: Question[];
-  private questions: Question[];
+  private questionsByIdx: Question[];
+  private questionIdxQueue: number[];
 
   constructor(questions: Question[]) {
-    this.originalQuestions = [...questions];
-    this.questions = [...questions];
-    this.shuffleQuestions();
+    this.questionsByIdx = [...questions];
+    this.questionIdxQueue = questions.map((question) => question.idx);
+    this.shuffleQuestionIndices();
   }
 
-  // Fisher–Yates shuffling
-  private shuffleQuestions(): void {
-    for (let i = this.questions.length - 1; i > 0; i--) {
+  // Fisher-Yates shuffling on JSON indices so questions are retrieved by idx.
+  private shuffleQuestionIndices(): void {
+    for (let i = this.questionIdxQueue.length - 1; i > 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
-      [this.questions[i], this.questions[randomIndex]] = [
-        this.questions[randomIndex],
-        this.questions[i],
+      [this.questionIdxQueue[i], this.questionIdxQueue[randomIndex]] = [
+        this.questionIdxQueue[randomIndex],
+        this.questionIdxQueue[i],
       ];
     }
   }
 
   getNextQuestion(): Question | undefined {
-    return this.questions.pop();
+    const questionIdx = this.questionIdxQueue.pop();
+
+    if (questionIdx === undefined) {
+      return undefined;
+    }
+
+    return this.questionsByIdx[questionIdx];
   }
 
   reset() {
-    this.questions = [...this.originalQuestions];
-    this.shuffleQuestions();
+    this.questionIdxQueue = this.questionsByIdx.map((question) => question.idx);
+    this.shuffleQuestionIndices();
   }
 
   static async loadQuestions(filePath: string): Promise<Question[]> {
@@ -45,8 +60,11 @@ export class QuestionManager {
       );
     }
 
-    const questions: Question[] = await response.json();
+    const questions: RawQuestion[] = await response.json();
 
-    return questions;
+    return questions.map((question, idx) => ({
+      idx,
+      ...question,
+    }));
   }
 }

@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "es6",
+    "module": "node16", //es6
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "ignoreDeprecations": "6.0"
+    "moduleResolution": "node16", //node
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

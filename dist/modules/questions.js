@@ -1,25 +1,29 @@
 export class QuestionManager {
     constructor(questions) {
-        this.originalQuestions = [...questions];
-        this.questions = [...questions];
-        this.shuffleQuestions();
+        this.questionsByIdx = [...questions];
+        this.questionIdxQueue = questions.map((question) => question.idx);
+        this.shuffleQuestionIndices();
     }
-    // Fisher–Yates shuffling
-    shuffleQuestions() {
-        for (let i = this.questions.length - 1; i > 0; i--) {
+    // Fisher-Yates shuffling on JSON indices so questions are retrieved by idx.
+    shuffleQuestionIndices() {
+        for (let i = this.questionIdxQueue.length - 1; i > 0; i--) {
             const randomIndex = Math.floor(Math.random() * (i + 1));
-            [this.questions[i], this.questions[randomIndex]] = [
-                this.questions[randomIndex],
-                this.questions[i],
+            [this.questionIdxQueue[i], this.questionIdxQueue[randomIndex]] = [
+                this.questionIdxQueue[randomIndex],
+                this.questionIdxQueue[i],
             ];
         }
     }
     getNextQuestion() {
-        return this.questions.pop();
+        const questionIdx = this.questionIdxQueue.pop();
+        if (questionIdx === undefined) {
+            return undefined;
+        }
+        return this.questionsByIdx[questionIdx];
     }
     reset() {
-        this.questions = [...this.originalQuestions];
-        this.shuffleQuestions();
+        this.questionIdxQueue = this.questionsByIdx.map((question) => question.idx);
+        this.shuffleQuestionIndices();
     }
     static async loadQuestions(filePath) {
         const response = await fetch(filePath);
@@ -27,6 +31,9 @@ export class QuestionManager {
             throw new Error(`Fetching ${filePath} failed with status: ${response.status}`);
         }
         const questions = await response.json();
-        return questions;
+        return questions.map((question, idx) => ({
+            idx,
+            ...question,
+        }));
     }
 }
