@@ -28,6 +28,22 @@ export class UIManager {
         textInput.placeholder = "Enter your name";
         textInput.id = "player-name";
         textInput.classList.add("form-control");
+        textInput.autocomplete = "off";
+        // Add event listener to trigger start on Enter key press
+        textInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const playerName = textInput.value.trim();
+                if (playerName.length === 0) {
+                    alert("Please enter your name");
+                    return;
+                }
+                onStart(playerName);
+            }
+        });
+        // Focus the input field when the start screen is shown
+        setTimeout(() => textInput.focus(), 0);
+        // no autofill
         playerInputContainer.appendChild(textInput);
         const startButton = this.createElement("button", "start-button", "Start Game", ["btn", "btn-primary", "my-2"], "player-input");
         startButton.addEventListener("click", () => {
