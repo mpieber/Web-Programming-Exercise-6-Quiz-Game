@@ -6,6 +6,12 @@ export class ScoreManager {
         this.answerRecords = [];
         this.pointsPerDifficulty = { easy: 1, medium: 2, hard: 3 };
     }
+    calculatePercentage(earned, max) {
+        if (max === 0) {
+            return 0;
+        }
+        return Math.round((earned / max) * 100 * 100) / 100;
+    }
     updateScore(question, playerAnswer) {
         const currPoints = this.pointsPerDifficulty[question.difficulty];
         let categoryResult = this.categoryResults.find((item) => item.category === question.category);
@@ -33,11 +39,9 @@ export class ScoreManager {
         }
     }
     getGameSummary() {
-        this.categoryResults.forEach((result) => (result.score =
-            Math.round((result.earnedPoints / result.maxPoints) * 100 * 100) /
-                100));
+        this.categoryResults.forEach((result) => (result.score = this.calculatePercentage(result.earnedPoints, result.maxPoints)));
         return {
-            totalScore: Math.round((this.earnedPoints / this.maxPoints) * 100 * 100) / 100,
+            totalScore: this.calculatePercentage(this.earnedPoints, this.maxPoints),
             earnedPoints: this.earnedPoints,
             maxPoints: this.maxPoints,
             categoryResults: this.categoryResults,
@@ -45,7 +49,7 @@ export class ScoreManager {
         };
     }
     getScore() {
-        return Math.round((this.earnedPoints / this.maxPoints) * 100 * 100) / 100;
+        return this.calculatePercentage(this.earnedPoints, this.maxPoints);
     }
     getEarnedPoints() {
         return this.earnedPoints;

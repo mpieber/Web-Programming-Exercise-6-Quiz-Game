@@ -52,6 +52,26 @@ export class UIManager {
             this.createElement("div", "", `Question ${questionNumber}: ${resultText}`, ["my-2", "text-center"], "results");
         });
     }
+    showAnswerFeedback(isCorrect, correctAnswer, nextButtonLabel, onNext) {
+        const questionContainer = this.requireElement("question-container");
+        const feedbackMessage = isCorrect
+            ? "Correct!"
+            : `Incorrect. Correct answer: ${correctAnswer}`;
+        this.createElement("div", "answer-feedback", feedbackMessage, [
+            "alert",
+            isCorrect ? "alert-success" : "alert-danger",
+            "mt-3",
+            "text-center",
+        ], "question-container");
+        const nextButton = this.createElement("button", "next-button", nextButtonLabel, ["btn", "btn-secondary", "mt-2"], "question-container");
+        nextButton.addEventListener("click", () => {
+            const feedbackElement = questionContainer.querySelector("#answer-feedback");
+            const nextButtonElement = questionContainer.querySelector("#next-button");
+            feedbackElement === null || feedbackElement === void 0 ? void 0 : feedbackElement.remove();
+            nextButtonElement === null || nextButtonElement === void 0 ? void 0 : nextButtonElement.remove();
+            onNext();
+        });
+    }
     showRestartButton(onRestart) {
         const restartButton = this.createElement("button", "restart-button", "Restart Game", ["btn", "btn-primary", "my-3"], "results");
         restartButton.addEventListener("click", () => {
@@ -63,6 +83,10 @@ export class UIManager {
         const leaderboardList = this.requireElement("leaderboard-list");
         leaderboardList.replaceChildren();
         scoreList.forEach((entry) => this.createElement("div", "", `${entry.playerName}: ${entry.points} points (${entry.score} %)`, ["card", "p-2", "my-2"], "leaderboard-list"));
+    }
+    showLeaderboardResetButton(onReset) {
+        const resetButton = this.requireElement("reset-leaderboard-button");
+        resetButton.addEventListener("click", () => onReset());
     }
     disableOptionButtons() {
         const optionsContainer = this.requireElement("answer-options");

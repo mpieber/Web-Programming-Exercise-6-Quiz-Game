@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "node16", //es6
+    "module": "ES2020",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node16", //node
+    "moduleResolution": "bundler",
     "esModuleInterop": true
   },
   "include": ["src/**/*"],

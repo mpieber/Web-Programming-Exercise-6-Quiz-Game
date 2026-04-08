@@ -11,18 +11,60 @@ export interface ScoreRecord {
 
 const questionsFilePath = "./questions.json";
 const totalQuestionCount = 5;
+const leaderboardStorageKey = "quizLeaderboard";
 
-const scoreList: ScoreRecord[] = [];
+const scoreList: ScoreRecord[] = loadScoreList();
 
 const uiManager = new UIManager();
 
+uiManager.showLeaderboard(scoreList);
+uiManager.showLeaderboardResetButton(resetLeaderboard);
+
 initGame(questionsFilePath);
+
+function loadScoreList(): ScoreRecord[] {
+  const rawLeaderboard = localStorage.getItem(leaderboardStorageKey);
+
+  if (!rawLeaderboard) {
+    return [];
+  }
+
+  try {
+    const parsedLeaderboard = JSON.parse(rawLeaderboard);
+
+    if (!Array.isArray(parsedLeaderboard)) {
+      return [];
+    }
+
+    const validRecords = parsedLeaderboard.filter(
+      (entry): entry is ScoreRecord =>
+        typeof entry?.playerName === "string" &&
+        typeof entry?.points === "number" &&
+        typeof entry?.score === "number",
+    );
+
+    return validRecords.sort((a, b) => b.score - a.score);
+  } catch (error) {
+    console.error("Failed to parse leaderboard from localStorage", error);
+    return [];
+  }
+}
+
+function saveScoreList(): void {
+  localStorage.setItem(leaderboardStorageKey, JSON.stringify(scoreList));
+}
+
+function resetLeaderboard(): void {
+  scoreList.length = 0;
+  saveScoreList();
+  uiManager.showLeaderboard(scoreList);
+}
 
 async function initGame(filePath: string) {
   try {
     const questions = await QuestionManager.loadQuestions(filePath);
 
-    const questionManager = new QuestionManager(questions);
+    const questionManager = new QuestionManager(questions, totalQuestionCount);
     const scoreManager = new ScoreManager();
 
     const gameManager = new GameManager(
@@ -53,12 +95,16 @@ function updateLeaderboard(
   );
 
   if (existingPlayer) {
-    existingPlayer.score = Math.max(existingPlayer.score, score);
+    if (score > existingPlayer.score) {
+      existingPlayer.score = score;
+      existingPlayer.points = points;
+    }
   } else {
     scoreList.push({ playerName: playerName, points: points, score: score });
   }
 
   scoreList.sort((a, b) => b.score - a.score);
+  saveScoreList();
 
   uiManager.showLeaderboard(scoreList);
 }

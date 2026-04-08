@@ -1,6 +1,6 @@
-import { Question } from "./questions";
-import { GameSummary } from "./scoring";
-import { ScoreRecord } from "./../main";
+import { Question } from "./questions.js";
+import { GameSummary } from "./scoring.js";
+import { ScoreRecord } from "./../main.js";
 
 export class UIManager {
   showQuestion(
@@ -137,6 +137,50 @@ export class UIManager {
     });
   }
 
+  showAnswerFeedback(
+    isCorrect: boolean,
+    correctAnswer: string,
+    nextButtonLabel: string,
+    onNext: () => void,
+  ): void {
+    const questionContainer = this.requireElement("question-container");
+
+    const feedbackMessage = isCorrect
+      ? "Correct!"
+      : `Incorrect. Correct answer: ${correctAnswer}`;
+
+    this.createElement(
+      "div",
+      "answer-feedback",
+      feedbackMessage,
+      [
+        "alert",
+        isCorrect ? "alert-success" : "alert-danger",
+        "mt-3",
+        "text-center",
+      ],
+      "question-container",
+    );
+
+    const nextButton = this.createElement(
+      "button",
+      "next-button",
+      nextButtonLabel,
+      ["btn", "btn-secondary", "mt-2"],
+      "question-container",
+    );
+
+    nextButton.addEventListener("click", () => {
+      const feedbackElement = questionContainer.querySelector("#answer-feedback");
+      const nextButtonElement = questionContainer.querySelector("#next-button");
+
+      feedbackElement?.remove();
+      nextButtonElement?.remove();
+
+      onNext();
+    });
+  }
+
   showRestartButton(onRestart: (playerName: string) => void): void {
     const restartButton = this.createElement(
       "button",
@@ -165,6 +209,11 @@ export class UIManager {
         "leaderboard-list",
       ),
     );
+  }
+
+  showLeaderboardResetButton(onReset: () => void): void {
+    const resetButton = this.requireElement("reset-leaderboard-button");
+    resetButton.addEventListener("click", () => onReset());
   }
 
   private disableOptionButtons(): void {

@@ -27,11 +27,20 @@ export class GameManager {
         }
     }
     handleAnswer(question, playerAnswer) {
+        const isCorrect = question.answer === playerAnswer;
         this.scoreManager.updateScore(question, playerAnswer);
-        if (this.questionCount < this.totalQuestionCount) {
-            this.currentQuestion = this.questionManager.getNextQuestion();
-        }
-        else {
+        const hasMoreQuestions = this.questionCount < this.totalQuestionCount;
+        this.uiManager.showAnswerFeedback(isCorrect, question.answer, hasMoreQuestions ? "Next Question" : "Show Results", () => {
+            if (hasMoreQuestions) {
+                this.currentQuestion = this.questionManager.getNextQuestion();
+                if (this.currentQuestion) {
+                    this.questionCount++;
+                    const nextQuestion = this.currentQuestion;
+                    this.uiManager.showQuestion(nextQuestion, this.questionCount, (nextAnswer) => this.handleAnswer(nextQuestion, nextAnswer));
+                    return;
+                }
+                throw new Error("Not enough questions available");
+            }
             this.onRoundEnd(this.playerName, this.scoreManager.getEarnedPoints(), this.scoreManager.getScore());
             this.uiManager.showGameSummary(this.scoreManager.getGameSummary());
             this.uiManager.showRestartButton((playerName) => {
@@ -39,16 +48,7 @@ export class GameManager {
                 this.setPlayerName(playerName);
                 this.startGame();
             });
-            return;
-        }
-        if (this.currentQuestion) {
-            this.questionCount++;
-            const question = this.currentQuestion;
-            this.uiManager.showQuestion(question, this.questionCount, (playerAnswer) => this.handleAnswer(question, playerAnswer));
-        }
-        else {
-            throw new Error("Not enough questions available");
-        }
+        });
     }
     resetGame() {
         this.scoreManager.reset();

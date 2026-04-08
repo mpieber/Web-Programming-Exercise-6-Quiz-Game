@@ -1,4 +1,4 @@
-import { Question } from "./questions";
+import { Question } from "./questions.js";
 
 export interface CategoryResult {
   category: string;
@@ -27,6 +27,14 @@ export class ScoreManager {
   private categoryResults: CategoryResult[] = [];
   private answerRecords: AnswerRecord[] = [];
   private pointsPerDifficulty = { easy: 1, medium: 2, hard: 3 };
+
+  private calculatePercentage(earned: number, max: number): number {
+    if (max === 0) {
+      return 0;
+    }
+
+    return Math.round((earned / max) * 100 * 100) / 100;
+  }
 
   updateScore(question: Question, playerAnswer: string): void {
     const currPoints = this.pointsPerDifficulty[question.difficulty];
@@ -64,13 +72,13 @@ export class ScoreManager {
   getGameSummary(): GameSummary {
     this.categoryResults.forEach(
       (result) =>
-        (result.score =
-          Math.round((result.earnedPoints / result.maxPoints) * 100 * 100) /
-          100),
+        (result.score = this.calculatePercentage(
+          result.earnedPoints,
+          result.maxPoints,
+        )),
     );
     return {
-      totalScore:
-        Math.round((this.earnedPoints / this.maxPoints) * 100 * 100) / 100,
+      totalScore: this.calculatePercentage(this.earnedPoints, this.maxPoints),
       earnedPoints: this.earnedPoints,
       maxPoints: this.maxPoints,
       categoryResults: this.categoryResults,
@@ -79,7 +87,7 @@ export class ScoreManager {
   }
 
   getScore(): number {
-    return Math.round((this.earnedPoints / this.maxPoints) * 100 * 100) / 100;
+    return this.calculatePercentage(this.earnedPoints, this.maxPoints);
   }
 
   getEarnedPoints(): number {
